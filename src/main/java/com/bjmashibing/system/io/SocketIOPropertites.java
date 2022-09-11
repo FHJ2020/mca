@@ -51,7 +51,7 @@ public class SocketIOPropertites {
             server.bind(new InetSocketAddress(9090), BACK_LOG);
             server.setReceiveBufferSize(RECEIVE_BUFFER);
             server.setReuseAddress(REUSE_ADDR);
-            server.setSoTimeout(SO_TIMEOUT);
+//            server.setSoTimeout(SO_TIMEOUT);
 
         } catch (IOException e) {
             e.printStackTrace();
