@@ -16,6 +16,7 @@ public class SocketClient {
 
             client.setSendBufferSize(20);
             client.setTcpNoDelay(true);
+            client.setSoTimeout(3000);
             OutputStream out = client.getOutputStream();
 
             InputStream in = System.in;
