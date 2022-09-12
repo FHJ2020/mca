@@ -84,16 +84,9 @@ public class SocketIOPropertites {
                                 while (true) {
 
                                     int num=0;
-                                    try {
-                                        num = reader.read(data);
-                                    } catch (IOException ex) {
-                                        ex.printStackTrace();
-//                                        System.out.println(in.);
-//                                        if (!client.isClosed()) {
-//                                            System.out.println("==close socket==");
-//                                            client.close();
-//                                        }
-                                    }
+
+                                    num = reader.read(data);
+
 
                                     if (num > 0) {
                                         System.out.println("client read some data is :" + num + " val :" + new String(data, 0, num));
