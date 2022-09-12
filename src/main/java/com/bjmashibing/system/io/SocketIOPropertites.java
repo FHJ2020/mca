@@ -29,7 +29,7 @@ public class SocketIOPropertites {
     private static final int CLI_SEND_BUF = 20;
     private static final boolean CLI_LINGER = true;
     private static final int CLI_LINGER_N = 0;
-    private static final int CLI_TIMEOUT = 3000;
+    private static final int CLI_TIMEOUT = 0;
     private static final boolean CLI_NO_DELAY = false;
 /*
 
@@ -88,6 +88,7 @@ public class SocketIOPropertites {
                                         num = reader.read(data);
                                     } catch (IOException ex) {
                                         ex.printStackTrace();
+//                                        System.out.println(in.);
 //                                        if (!client.isClosed()) {
 //                                            System.out.println("==close socket==");
 //                                            client.close();
