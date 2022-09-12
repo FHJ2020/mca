@@ -1,5 +1,7 @@
 package com.bjmashibing.system.io;
 
+import thread.SleepHelper;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -14,10 +16,12 @@ public class SocketClient {
         try {
             Socket client = new Socket("192.168.2.128", 9090);
 
-            client.setSendBufferSize(20);
-            //true
-            client.setTcpNoDelay(true);
-            client.setOOBInline(false);
+            client.setSendBufferSize(25);
+            //true 关闭 nlg, false 开启
+            client.setTcpNoDelay(false);
+
+//            client.setOOBInline(false);
+
 //            client.setSoTimeout(3000);
             OutputStream out = client.getOutputStream();
 
@@ -29,11 +33,14 @@ public class SocketClient {
                 String line = reader.readLine();
                 if (line != null) {
                     byte[] bb = line.getBytes();
+                    System.out.println("byte len:  " + bb.length + " , str len: " + line.length());
+                    SleepHelper.sleepMicroSecond(1);
                     for (byte b : bb) {
                         out.write(b);
                     }
 
-
+                    client.close();
+                    break;
                 }
             }
         } catch (IOException e) {
