@@ -18,7 +18,7 @@ public class SocketIOPropertites {
 
     //server socket listen property:
     private static final int RECEIVE_BUFFER = 10;
-    private static final int SO_TIMEOUT = 0;
+    private static final int SO_TIMEOUT = 3000;
     private static final boolean REUSE_ADDR = false;
     private static final int BACK_LOG = 2;
     //client socket listen property on server endpoint:
@@ -51,7 +51,7 @@ public class SocketIOPropertites {
             server.bind(new InetSocketAddress(9090), BACK_LOG);
             server.setReceiveBufferSize(RECEIVE_BUFFER);
             server.setReuseAddress(REUSE_ADDR);
-//            server.setSoTimeout(SO_TIMEOUT);
+            server.setSoTimeout(SO_TIMEOUT);
 
         } catch (IOException e) {
             e.printStackTrace();
