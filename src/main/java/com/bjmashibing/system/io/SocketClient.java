@@ -15,6 +15,7 @@ public class SocketClient {
             Socket client = new Socket("192.168.2.128", 9090);
 
             client.setSendBufferSize(20);
+            //true
             client.setTcpNoDelay(true);
             client.setOOBInline(false);
 //            client.setSoTimeout(3000);
