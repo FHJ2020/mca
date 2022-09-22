@@ -33,6 +33,7 @@ public class SocketMultiplexingSingleThreadv1 {
             epoll：  epoll_ctl(fd3,ADD,fd4,EPOLLIN
              */
             server.register(selector, SelectionKey.OP_ACCEPT);
+            System.out.println("server register ~~");
 
 
         } catch (IOException e) {
@@ -73,12 +74,13 @@ public class SocketMultiplexingSingleThreadv1 {
                         SelectionKey key = iter.next();
                         iter.remove(); //set  不移除会重复循环处理
                         if (key.isAcceptable()) {
-                            //看代码的时候，这里是重点，如果要去接受一个新的连接
+                            //看代码的时候，这里是重点，如果要去接受一个新的接
                             //语义上，accept接受连接且返回新连接的FD对吧？
                             //那新的FD怎么办？
                             //select，poll，因为他们内核没有空间，那么在jvm中保存和前边的fd4那个listen的一起
                             //epoll： 我们希望通过epoll_ctl把新的客户端fd注册到内核空间
                             acceptHandler(key);
+                            System.out.println("client register ~~~");
                         } else if (key.isReadable()) {
                             readHandler(key);  //连read 还有 write都处理了
                             //在当前线程，这个方法可能会阻塞  ，如果阻塞了十年，其他的IO早就没电了。。。
